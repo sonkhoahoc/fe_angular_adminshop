@@ -1,0 +1,49 @@
+<div class="hold-transition register-page">
+  <p-toast></p-toast>
+  <div class="login-box">
+    <div class="card">
+      <div class="card-body login-card-body">
+        <h2 class="login-box-msg">Đăng nhập hệ thống</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="login()" method="post">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Tài khoản" formControlName="username">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" placeholder="Mật khẩu" formControlName="password">
+            <div class="input-group-append">
+              <div class="input-group-text" (click)="showPassword = !showPassword">
+                <span class="fas" [ngClass]="{'fa-lock': !showPassword, 'fa-eye': showPassword, 'fa-eye-slash': !showPassword}"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-8">
+              <div class="icheck-dark">
+                <input type="checkbox" id="remember">
+                <label for="remember">
+                  Nhớ mật khẩu
+                </label>
+              </div>
+            </div>
+            <div class="col-4">
+              <button type="submit" class="btn btn-outline-dark btn-block" >Đăng nhập</button>
+            </div>
+          </div>
+        </form>
+        <p class="mb-1">
+          <a routerLink='#'> Quên mật khẩu </a>
+        </p>
+        <p class="mb-0">
+          <a routerLink='/register' class="text-center">Tạo tài khoản mới</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+

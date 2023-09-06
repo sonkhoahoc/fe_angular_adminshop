@@ -1,0 +1,35 @@
+<h1>
+  {{ isEdit ? 'Sửa sản phẩm' : 'Thêm sản phẩm' }}
+</h1>
+
+<p-divider></p-divider>
+
+<div class="container">
+  <form #categoryForm="ngForm" (ngSubmit)="onSave()">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-12 p-md-6">
+        <label for="name">Tên Danh Mục:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="category.name"
+          required
+          pInputText
+        />
+      </div>
+    </div>
+    <br>
+    <div class="p-grid p-justify-end text-right">
+      <button
+        pButton
+        type="submit"
+        [disabled]="categoryForm.invalid"
+        class="p-button-success"
+      >
+        {{ isEdit ? 'Sửa' : 'Thêm' }}
+      </button>
+    </div>
+  </form>
+</div>
+
