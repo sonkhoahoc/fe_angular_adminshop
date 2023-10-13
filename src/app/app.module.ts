@@ -15,6 +15,7 @@ import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FileUploadModule } from 'primeng/fileupload';
+import { EditorModule } from 'primeng/editor';
 
 import { MessageService } from 'primeng/api';
 
@@ -56,6 +57,7 @@ interface NgxSpinnerConfig {
     TreeSelectModule,
     FileUploadModule ,
     NgSelect2Module,
+    EditorModule,
     NgxSpinnerModule.forRoot()
   ],
   providers: [

@@ -16,6 +16,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { NgSelect2Module } from 'ng-select2';
+import { EditorModule } from 'primeng/editor';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminDashboardComponent } from './dashboard/component/admin-dashboard/admin-dashboard.component';
@@ -146,6 +147,7 @@ const routes: Routes = [
     TreeSelectModule,
     FileUploadModule,
     NgSelect2Module,
+    EditorModule,
     RouterModule.forChild(routes)
   ]
 })

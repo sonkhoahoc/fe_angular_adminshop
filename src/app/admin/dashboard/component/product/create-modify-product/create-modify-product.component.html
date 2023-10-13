@@ -81,17 +81,17 @@
 
       <div class="form-group">
         <label for="description">Mô tả sản phẩm</label>
-        <textarea
+        <p-editor
           [(ngModel)]="product.description"
           name="description"
           id="description"
-          class="form-control"
-          required
-        ></textarea>
+        ></p-editor>
         <div *ngIf="isSubmitted && !product.description" class="error-message">
           Vui lòng không để mô tả sản phẩm trống!!!
         </div>
       </div>
+
+
 
       <div class="form-group">
         <label for="avatar">Chọn ảnh sản phẩm: </label>
