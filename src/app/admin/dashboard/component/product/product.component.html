@@ -1,0 +1,55 @@
+
+  <div class="header">
+    <h1 class="header-title">Danh sách sản phẩm</h1>
+    <div class="header-search">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+          <i class="pi pi-search"></i>
+        </span>
+        <input pInputText type="text" [(ngModel)]="searchText" placeholder="Tìm kiếm..." (input)="onSearch()">
+      </div>
+    </div>
+
+    <button class="btn-add" (click)="onAdd()" pButton>
+      <i class="fas fa-plus"></i>
+      Thêm
+    </button>
+  </div>
+
+  <p-divider></p-divider>
+
+  <p-table [value]="pros" [paginator]="true" [rows]="10" [responsive]="true" [autoLayout]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Tên sản phẩm</th>
+        <th>Loại sản phẩm</th>
+        <th>Số lượt xem sản phẩm</th>
+        <th>Số lượng sản phẩm đã bán</th>
+        <th>Mô tả sản phẩm</th>
+        <th>Giá sản phẩm </th>
+        <th>Ảnh sản phẩm</th>
+        <th>Trạng thái</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-pross let-i="index">
+      <tr>
+        <td> {{pross.id}} </td>
+        <td> {{pross.name}} </td>
+        <td> {{pross.category_id}} </td>
+        <td> {{pross.views_count}} </td>
+        <td> {{pross.sold_quantity}} </td>
+        <td class="description-cell" > {{pross.description}} </td>
+        <td> {{pross.price | number:'1.0-0' }}đ </td>
+        <td>
+          <img *ngIf="pross && pross.avatar" src="assets/image/product/{{pross.avatar}}" style="width: 100px;" alt="">
+        </td>
+        <td>
+          <button (click)="onEdit(pross.id)" pButton type="button" icon="pi pi-pencil" class="p-button-info"></button>
+          <button (click)="deleteProduct(pross.id)" pButton type="button" icon="pi pi-trash" class="p-button-danger"></button>
+        </td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+

@@ -1,0 +1,54 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.status-colum{
+  text-align: right;
+}
+
+.header > .btn-add {
+  margin-left: 10px;
+  background-color: #7fff00;
+  height: 40px;
+  width: 90px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  color: #FFF;
+}
+
+.header-title {
+  margin-right: auto;
+}
+
+.btn-edit,
+.btn-delete {
+  margin-right: 5px;
+}
+
+.btn-edit{
+  background-color: #1E90FF;
+  height: 40px;
+  width: 90px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  color: #FFF;
+}
+
+.btn-delete{
+  background-color: red;
+  height: 40px;
+  width: 90px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  color: #FFF;
+}

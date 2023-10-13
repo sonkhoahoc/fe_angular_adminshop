@@ -31,7 +31,7 @@ export class CreateModifyCategoryNewsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.id   = +this.route.snapshot.params['id'];
+    this.id = +this.route.snapshot.params['id'];
 
     if(this.id){
       this.isEdit = true;

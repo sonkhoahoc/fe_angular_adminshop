@@ -1,0 +1,118 @@
+<!-- create-modify-product.component.html -->
+
+<div class="container">
+  <div class="header">
+    <h2>
+      {{ is_Edit ? 'Chỉnh sửa sản phẩm' : 'Tạo mới sản phẩm' }}
+    </h2>
+
+    <form (ngSubmit)="onSubmit()" class="form">
+      <div class="form-group">
+        <label for="category_id"> Chọn loại sản phẩm: </label>
+        <select
+          [(ngModel)]="product.category_id"
+          name="category_id"
+          id="category_id"
+          class="form-control"
+          [style]="{'width': '300px'}"
+          required
+        >
+          <option [value]="0"> --Vui lòng chọn loại sản phẩm-- </option>
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+        <div *ngIf="isSubmitted && !product.category_id" class="error-message">
+          Vui lòng chọn loại sản phẩm!!!
+        </div>
+      </div>
+
+      <!-- <div class="form-group">
+        <label for="category_id">Chọn loại sản phẩm</label>
+        <ng-select2
+          class="form-control"
+          [(ngModel)]="product.category_id"
+          [data]="categories"
+          [placeholder]="'--Vui lòng chọn loại sản phẩm--'"
+          [style]="{'width': '300px'}"
+          [options]="{ placeholder: '--Vui lòng chọn loại sản phẩm--' }"
+          name="category_id"
+          id="category_id"
+          [value]="categories.id"
+
+        >
+        </ng-select2>
+        <div *ngIf="isSubmitted && !product.category_id" class="error-message">
+          Vui lòng chọn loại sản phẩm!!!
+        </div>
+      </div> -->
+
+
+
+      <div class="form-group">
+        <label for="name">Tên sản phẩm: </label>
+        <input
+          [(ngModel)]="product.name"
+          type="text"
+          name="name"
+          id="name"
+          class="form-control"
+          required
+        >
+        <div *ngIf="isSubmitted && !product.name" class="error-message">
+          Vui lòng không để tên sản phẩm trống!!!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Giá sản phẩm: </label>
+        <input
+          [(ngModel)]="product.price"
+          type="number"
+          name="price"
+          id="price"
+          class="form-control"
+          required
+        >
+        <div *ngIf="isSubmitted && (!product.price || product.price < 0)" class="error-message">
+          Vui lòng nhập giá sản phẩm hợp lệ!!!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Mô tả sản phẩm</label>
+        <textarea
+          [(ngModel)]="product.description"
+          name="description"
+          id="description"
+          class="form-control"
+          required
+        ></textarea>
+        <div *ngIf="isSubmitted && !product.description" class="error-message">
+          Vui lòng không để mô tả sản phẩm trống!!!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="avatar">Chọn ảnh sản phẩm: </label>
+        <input
+          (change)="onSelectFile($event)"
+          type="file"
+          id="avatar"
+          name="avatar"
+          class="avatar"
+          accept="image/*"
+          required
+        >
+      </div>
+
+
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">
+          {{ is_Edit ? 'Cập nhật' : 'Tạo' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

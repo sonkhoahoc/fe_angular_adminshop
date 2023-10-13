@@ -18,10 +18,12 @@ export class CategoryProductComponent implements OnInit {
   categories: Category_Product[] = [];
   searchText: string = '';
 
+  originalCategories: Category_Product[] = [];
+
   constructor(private cateSer: CategoryProductService,
               private messSer: MessageService,
-              private router: Router)
-  { }
+              private router: Router
+  ) { }
 
   ngOnInit() {
     this.getlist();
@@ -30,6 +32,8 @@ export class CategoryProductComponent implements OnInit {
   getlist(){
     this.cateSer.getlistCategory_product().subscribe((res: any) =>{
       this.categories = res.data;
+
+      this.originalCategories = [...this.categories]
     });
   }
 
@@ -50,14 +54,13 @@ export class CategoryProductComponent implements OnInit {
     });
   }
 
-  onSearch(){
-    if(this.searchText){
-      this.categories = this.categories.filter((res) =>
+  onSearch() {
+    if (this.searchText) {
+      this.categories = this.originalCategories.filter((res) =>
         res.name.toLowerCase().includes(this.searchText.toLowerCase())
       );
-    }
-    else{
-      this.getlist();
+    } else {
+      this.categories = [...this.originalCategories];
     }
   }
 

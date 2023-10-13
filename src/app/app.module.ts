@@ -14,12 +14,17 @@ import { PaginatorModule } from 'primeng/paginator';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { FileUploadModule } from 'primeng/fileupload';
 
 import { MessageService } from 'primeng/api';
 
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { RegisterComponent } from './register/register.component';
 import { AppComponent } from './app.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { TreeSelectModule } from 'primeng/treeselect';
+import { NgSelect2Module } from 'ng-select2';
 
 interface NgxSpinnerConfig {
   type?: string;
@@ -45,6 +50,12 @@ interface NgxSpinnerConfig {
     DividerModule,
     InputTextModule,
     ButtonModule,
+    FileUploadModule,
+    DropdownModule,
+    NgSelectModule,
+    TreeSelectModule,
+    FileUploadModule ,
+    NgSelect2Module,
     NgxSpinnerModule.forRoot()
   ],
   providers: [

@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header > .btn-add {
+  margin-left: 10px;
+  background-color: #7fff00;
+  height: 40px;
+  width: 90px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  color: #FFF;
+}
+
+.header-title {
+  margin-right: auto;
+}
+
+.header-search {
+  display: flex;
+  align-items: center;
+}
+
+/* Trong file CSS hoặc style.scss */
+.description-cell {
+  max-width: 200px; /* Đặt giá trị tùy ý */
+  word-wrap: break-word; /* Chia các từ xuống dòng nếu chúng không thể fit vào một dòng */
+  white-space: pre-line; /* Cho phép giữ nguyên các ký tự xuống dòng (\n) */
+}
+

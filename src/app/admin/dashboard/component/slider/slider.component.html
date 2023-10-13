@@ -1,0 +1,30 @@
+<div class="header">
+  <h1 class="header-title">Danh sách slider</h1>
+  <button (click)="onCreate()"  class="btn-add"><i class="fas fa-plus"></i> Thêm</button>
+</div>
+
+<p-divider></p-divider>
+
+<p-table [value]="slider">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>#</th>
+      <th>Ảnh</th>
+      <th>Mô tả</th>
+      <th style="text-align: center;">Trạng thái</th>
+    </tr>
+  </ng-template>
+  <ng-template let-image pTemplate="body">
+    <tr>
+      <td>{{image.id}}</td>
+      <td>
+        <img *ngIf="image && image.url" src="assets/image/slider/{{image.url}}" alt="" style="width: 100px;">
+      </td>
+      <td>{{ image.note }}</td>
+      <td style="text-align: center;">
+        <button class="btn-edit" (click)="onEdit(image.id)" ><i class="fas fa-pencil-alt"></i> Sửa</button>
+        <button class="btn-delete" (click)="deleteSlider(image.id)" ><i class="fas fa-trash-alt"></i> Xóa</button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

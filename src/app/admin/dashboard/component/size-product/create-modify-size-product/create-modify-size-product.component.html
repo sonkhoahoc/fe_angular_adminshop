@@ -1,0 +1,52 @@
+<!-- create-modify-size-product.component.html -->
+
+<div class="container">
+  <div class="header">
+    <h2>{{ isEdit ? 'Chỉnh sửa kích thước' : 'Tạo mới kích thước' }}</h2>
+    <form (ngSubmit)="onSubmit()" class="form">
+      <div class="form-group">
+        <label for="product_id">Chọn Sản Phẩm</label>
+        <select
+          [(ngModel)]="size.product_id"
+          name="product_id"
+          id="product_id"
+          class="form-control"
+          [style]="{'width':'300px'}"
+        >
+          <option [value]="0"> --Vui lòng chọn sản phẩm-- </option>>
+          <option
+            *ngFor="let product of products"
+            [value]="product.id">
+            {{ product.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="name">Tên Kích Thước</label>
+        <input
+          type="text"
+          [(ngModel)]="size.name"
+          name="name"
+          id="name"
+          class="form-control"
+          required>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Số Lượng</label>
+        <input
+          type="number"
+          [(ngModel)]="size.quantity"
+          name="quantity"
+          id="quantity"
+          class="form-control"
+          required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">
+          {{ isEdit ? 'Cập nhật' : 'Tạo' }}
+        </button>
+      </div>
+    </form>
+  </div>
+
+</div>

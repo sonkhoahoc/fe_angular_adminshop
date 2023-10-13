@@ -31,7 +31,6 @@ export class CategoryNewsComponent implements OnInit {
   getList(){
     this.cateSer.getListCategory_news().subscribe((res: any) =>{
       this.categories = res.data;
-      console.log('dddd', res.data)
     });
   }
 

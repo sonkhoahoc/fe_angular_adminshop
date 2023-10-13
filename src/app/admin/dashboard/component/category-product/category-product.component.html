@@ -2,10 +2,15 @@
   <h1 class="header-title">Danh sách loại sản phẩm</h1>
   <div class="header-search">
     <div class="p-inputgroup">
-      <input type="text" [(ngModel)]="searchText" placeholder="Tìm kiếm...">
-      <button pButton type="button" (click)="onSearch()" ><i class="pi pi-search" style="color: 'var(--primary-color)'"></i></button>
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-search"></i>
+      </span>
+      <input pInputText type="text" [(ngModel)]="searchText" placeholder="Tìm kiếm..." (input)="onSearch()">
     </div>
   </div>
+
+
+
   <button (click)="onAdd()" class="btn-add"><i class="fas fa-plus"></i> Thêm</button>
 </div>
 
