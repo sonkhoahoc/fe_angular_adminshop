@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/model/product.model';
 import { CategoryProductService } from 'src/app/services/category-product/category-product.service';
 import { ProductService } from 'src/app/services/product/product.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { SelectItem } from 'primeng/api';
+
 
 @Component({
   selector: 'app-create-modify-product',
@@ -27,13 +29,17 @@ export class CreateModifyProductComponent implements OnInit {
     dateAdded: new Date(),
     dateUpdated: new Date(),
     description: '',
-    is_delete: false,
+    is_delete: true,
     avatar: ''
   };
   cateId: number;
   is_Edit: boolean = false;
   id: number | null = null;
   selectImg: string = '';
+
+  //Form
+  productForm: FormGroup;
+  fb: FormBuilder;
 
   //Validator
   isSubmitted: boolean = false;
@@ -44,12 +50,11 @@ export class CreateModifyProductComponent implements OnInit {
     private cateSer: CategoryProductService,
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder,
   ) { }
 
   ngOnInit() {
     this.id = +this.route.snapshot.params['id'];
-    this.is_Edit = !! this.id;
+    this.is_Edit = !!this.id;
 
     //Lấy danh sách loại sản phẩm để select
     this.cateSer.getlistCategory_product().subscribe((res: any) =>{
@@ -57,8 +62,24 @@ export class CreateModifyProductComponent implements OnInit {
     });
 
     if(this.is_Edit){
-      this.proSer.getProductById(this.id!).subscribe((res: any) =>{
+      this.proSer.getProductById(this.id).subscribe((res: any) =>{
         this.products = res.data;
+      });
+    }
+
+    //Validate data
+    this.productForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      price: new FormControl('', Validators.required),
+      description: new FormControl('',Validators.required),
+      avatar: new FormControl('', Validators.required)
+    });
+    if(this.is_Edit){
+      this.productForm.patchValue({
+        name: this.product.name,
+        price: this.product.price,
+        description: this.product.description,
+        avatar: this.product.avatar
       });
     }
   }
@@ -68,9 +89,6 @@ export class CreateModifyProductComponent implements OnInit {
     this.isSubmitted = true;
 
     this.validationErrors = [];
-    if(!this.product.category_id){
-      this.validationErrors.push('Vui lòng chọn loại sản phẩm!!!');
-    }
     if(!this.product.name){
       this.validationErrors.push('Vui lòng không để tên sản phẩm trống!!!');
     }
@@ -82,11 +100,9 @@ export class CreateModifyProductComponent implements OnInit {
     if(!this.product.description){
       this.validationErrors.push('Vui lòng không để mô tả sản phẩm trống!!!');
     }
-
     if(this.validationErrors.length > 0){
       return
     }
-
 
     if (this.is_Edit && this.id !== null) {
       // Nếu đang chỉnh sửa, gửi yêu cầu cập nhật
@@ -104,8 +120,16 @@ export class CreateModifyProductComponent implements OnInit {
 
   onSelectFile(event: any) {
     const file = event.target.files[0];
+
     if (file) {
-      this.product.avatar = file.name;
+      const reader = new FileReader();
+
+      reader.onload = (e) =>{
+        const base64Image  = e.target.result as string;
+        this.product.avatar = base64Image;
+      };
+      reader.readAsDataURL(file);
     }
   }
+
 }

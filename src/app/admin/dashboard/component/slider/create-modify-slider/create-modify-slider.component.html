@@ -2,17 +2,31 @@
   <h2>{{ isEdit ? 'Chỉnh sửa Slider' : 'Tạo Slider Mới' }}</h2>
   <form (ngSubmit)="onSave()">
     <div class="form-group">
-      <label for="image">Chọn hình ảnh:</label>
-      <input type="file" id="image" name="image" (change)="onSelectFile($event)">
-    </div>
-    <div class="form-group">
       <label for="note">Ghi chú:</label>
       <textarea id="note" name="note" class="form-control" [(ngModel)]="slider.note"></textarea>
     </div>
+
     <div class="form-group">
-      <label for="selectedImage">Hình ảnh đã chọn:</label>
-      <img *ngIf="slider.url" [src]="slider.url" alt="Hình ảnh đã chọn">
+      <label class="form-label" for="avatar">Chọn ảnh sản phẩm: </label>
+      <br>
+      <input
+        (change)="onSelectFimatLine($event)"
+        type="file"
+        id="avatar"
+        name="avatar"
+        class="avatar"
+        accept=".png, .jpg, .jpeg, .pdf"
+        required
+      >
+      <img
+        *ngIf="slider.url"
+        [src]="slider.url"
+        [style]="{'width': '300px', 'heigh':'300px'}"
+        alt="Chọn ảnh"
+        style="max-width: 100%;"
+      >
     </div>
+
     <button type="submit" class="btn btn-primary">{{ isEdit ? 'Cập nhật' : 'Tạo' }}</button>
   </form>
 </div>

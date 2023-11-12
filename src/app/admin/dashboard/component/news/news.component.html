@@ -1,0 +1,52 @@
+<div class="header">
+  <h1 class="header-title">Danh sách tin tức</h1>
+  <div class="header-search">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-search"></i>
+      </span>
+      <input pInputText type="text" placeholder="Tìm kiếm...">
+    </div>
+  </div>
+  <button class="btn btn-add" (click)="onAdd()" pButton>
+    <i class="fas fa-plus"></i>
+      Thêm
+  </button>
+</div>
+
+<p-divider></p-divider>
+
+<p-table [value]="news" [paginator]="true" [rows]="10" [responsive]="true" [autoLayout]="true">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Loại tin tức</th>
+      <th>Tiêu đề</th>
+      <th>Tin ngắn</th>
+      <th>Nội dung</th>
+      <th>Ghi chú</th>
+      <th>Ảnh</th>
+      <th>Trạng thái</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-newss let-i="index">
+    <tr>
+      <td> {{newss.id}} </td>
+      <td> {{newss.category_id}} </td>
+      <td class="description-cell"> {{newss.title}} </td>
+      <td class="description-cell"> {{newss.short_description}} </td>
+      <td class="description-cell"> {{newss.content}} </td>
+      <td class="description-cell"> {{newss.note}} </td>
+      <td>
+        <img *ngIf="newss && newss.avatar" [src]="newss.avatar" style="width: 100px;" >
+      </td>
+      <td>
+          <button (click)="onEdit(newss.id)"  pButton type="button" icon="pi pi-pencil" class="p-button-info"></button>
+          <button (click)="deleteNews(newss.id)" pButton type="button" icon="pi pi-trash" class="p-button-danger"></button>
+      </td>
+      <td>
+
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

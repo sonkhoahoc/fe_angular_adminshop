@@ -1,0 +1,42 @@
+<div class="header">
+  <h1 class="header-title">Danh sách ảnh chi tiết sản phẩm</h1>
+  <!-- <div class="header-search">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-search"></i>
+      </span>
+      <input pInputText type="text" [(ngModel)]="" placeholder="Tìm kiếm..." (input)="onSearch()">
+    </div>
+  </div> -->
+
+  <button class="btn-add" (click)="onAdd()" pButton>
+    <i class="fas fa-plus"></i>
+    Thêm
+  </button>
+</div>
+
+<p-table [value]="product_file" [paginator]="true" [rows]="10" [responsive]="true" [autoLayout]="true">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Sản phẩm</th>
+      <th>Mô tả ảnh</th>
+      <th>Ảnh chi tiết</th>
+      <th>Trạng thái</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-pross let-i="index">
+    <tr>
+      <td> {{pross.id}} </td>
+      <td> {{pross.product_id}} </td>
+      <td> {{pross.alt_description}} </td>
+      <td>
+        <img *ngIf="pross && pross.file" [src]="pross.file" style="width: 100px;" alt="file">
+      </td>
+      <td>
+        <button (click)="onEdit(pross.id)" pButton type="button" icon="pi pi-pencil" class="p-button-info"></button>
+        <button (click)="deleteProduct_file(pross.id)" pButton type="button" icon="pi pi-trash" class="p-button-danger"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

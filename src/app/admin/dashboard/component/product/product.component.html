@@ -42,7 +42,7 @@
         <td class="description-cell" > {{pross.description}} </td>
         <td> {{pross.price | number:'1.0-0' }}đ </td>
         <td>
-          <img *ngIf="pross && pross.avatar" src="assets/image/product/{{pross.avatar}}" style="width: 100px;" alt="">
+          <img *ngIf="pross && pross.avatar" [src]="pross.avatar" style="width: 100px;">
         </td>
         <td>
           <button (click)="onEdit(pross.id)" pButton type="button" icon="pi pi-pencil" class="p-button-info"></button>

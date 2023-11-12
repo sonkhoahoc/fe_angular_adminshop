@@ -21,6 +21,7 @@
     <tr>
       <th>#</th>
       <th>Tên danh mục</th>
+      <th>Danh mục cha</th>
       <th style="text-align: center;" >Trạng thái</th>
     </tr>
   </ng-template>
@@ -28,6 +29,7 @@
     <tr>
       <td>{{ category.id }}</td>
       <td>{{ category.name }}</td>
+      <td>{{ category.parent_category_id }}</td>
       <td style="text-align: center;">
         <button class="btn-edit" (click)="onEdit(category.id)"><i class="fas fa-pencil-alt"></i> Sửa</button>
         <button class="btn-delete" (click)="deleteCate(category.id)" ><i class="fas fa-trash-alt"></i> Xóa</button>

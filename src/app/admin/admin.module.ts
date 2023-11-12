@@ -32,8 +32,12 @@ import { SizeProductComponent } from './dashboard/component/size-product/size-pr
 import { ProductComponent } from './dashboard/component/product/product.component';
 import { CreateModifySizeProductComponent } from './dashboard/component/size-product/create-modify-size-product/create-modify-size-product.component';
 import { CreateModifyProductComponent } from './dashboard/component/product/create-modify-product/create-modify-product.component';
-
-
+import { NewsComponent } from './dashboard/component/news/news.component';
+import { CreateModifyNewsComponent } from './dashboard/component/news/create-modify-news/create-modify-news.component';
+import { Product_fileComponent } from './dashboard/component/product_file/product_file.component';
+import { CreateModifyProductFileComponent } from './dashboard/component/product_file/create-modify-product-file/create-modify-product-file.component';
+import { VoucherComponent } from './dashboard/component/voucher/voucher.component';
+import { CreateModifyVoucherComponent } from './dashboard/component/voucher/create-modify-voucher/create-modify-voucher.component';
 
 const routes: Routes = [
   {
@@ -108,6 +112,42 @@ const routes: Routes = [
         path: 'product/edit/:id',
         component: CreateModifyProductComponent
       },
+      {
+        path: 'news',
+        component: NewsComponent
+      },
+      {
+        path: 'news/create',
+        component: CreateModifyNewsComponent
+      },
+      {
+        path: 'news/edit/:id',
+        component: CreateModifyNewsComponent,
+      },
+      {
+        path: 'product-file',
+        component: Product_fileComponent
+      },
+      {
+        path: 'product-file/create',
+        component: CreateModifyProductFileComponent
+      },
+      {
+        path: 'product-file/edit/:id',
+        component: CreateModifyProductFileComponent
+      },
+      {
+        path: 'voucher',
+        component: VoucherComponent
+      },
+      {
+        path: 'voucher/create',
+        component: CreateModifyVoucherComponent
+      },
+      {
+        path: 'voucher/edit/:id',
+        component: CreateModifyVoucherComponent
+      }
     ]
   }
 ];
@@ -127,7 +167,13 @@ const routes: Routes = [
     SizeProductComponent,
     CreateModifySizeProductComponent,
     ProductComponent,
-    CreateModifyProductComponent
+    CreateModifyProductComponent,
+    NewsComponent,
+    CreateModifyNewsComponent,
+    Product_fileComponent,
+    CreateModifyProductFileComponent,
+    VoucherComponent,
+    CreateModifyVoucherComponent
   ],
   imports: [
     CommonModule,

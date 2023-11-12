@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="header">
+    <h2>
+      {{ is_Edit ? 'Chỉnh sửa voucher' : 'Tạo mới voucher' }}
+    </h2>
+
+    <p-divider></p-divider>
+
+    <form (ngSubmit)="onSubmit()" class="form">
+      <div class="form-group" >
+        <label for="name">Tên voucher: </label>
+        <input 
+          [(ngModel)]="voucher.name" 
+          type="text"
+          id="name"
+          class="form-control"
+          name="name"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="code">Mã voucher: </label>
+        <input 
+          [(ngModel)]="voucher.code" 
+          type="text"
+          id="code"
+          class="form-control"
+          name="code"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="max_apply_count">Số lần sử dụng: </label>
+        <input 
+          [(ngModel)]="voucher.max_apply_count" 
+          type="number"
+          id="max_apply_count"
+          class="form-control"
+          name="max_apply_count"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="discount_cash">Số tiền giảm:</label>
+        <input 
+          [(ngModel)]="voucher.discount_cash" 
+          type="number"
+          id="discount_cash"
+          class="form-control"
+          name="discount_cash"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="type">Ghi chú khác:</label>
+        <input 
+          [(ngModel)]="voucher.type" 
+          type="text"
+          id="type"
+          class="form-control"
+          name="type"
+        >
+      </div>
+
+      <div class="form-group">
+        <button pButton class="btn btn-primary">
+          {{ is_Edit ? 'Cập nhật' : 'Tạo' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

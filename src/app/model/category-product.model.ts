@@ -5,5 +5,6 @@ export interface Category_Product{
   dateAdded: Date;
   dateUpdated: Date;
   name: string;
+  parent_category_id?: any;
   is_delete: boolean
 }

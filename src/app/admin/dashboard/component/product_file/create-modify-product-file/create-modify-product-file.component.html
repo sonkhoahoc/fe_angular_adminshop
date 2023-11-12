@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="header">
+    <h2>
+      {{ is_Edit ? 'Chỉnh sửa sảnh chi tiết sản phẩm' : 'Tạo mới ảnh chi tiết sản phẩm' }}
+    </h2>
+
+    <p-divider></p-divider>
+    
+    <form class="form" (ngSubmit)="onSubmit()" >
+      <div class="form-group">
+        <label for="product_id"> Chọn sản phẩm: </label>
+        <select 
+          [(ngModel)]="product_file.product_id" 
+          name="product_id"
+          id="product_id"
+          class="form-control"
+          [style]="{'width':'300px'}"
+          required
+        >
+          <option value="0"> --Vui lòng chọn sản phẩm-- </option>
+          <option *ngFor="let pross of product" [value]="pross.id">
+            {{ pross.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group" >
+        <label for="alt_description">Mô tả ảnh chi tiết: </label>
+        <input 
+          [(ngModel)]="product_file.alt_description" 
+          type="text"
+          name="alt_description"
+          id="alt_description"
+          class="form-control"
+          required
+        >
+      </div>
+
+      <div class="form-group" >
+        <label for="file">Chọn ảnh chi tiết sản phẩm: </label>
+        <br>
+        <input 
+          (change)="onSelectFile($event)" 
+          type="file"
+          id="file"
+          name="file"
+          class="file"
+          accept=".png, .jpg, .jpeg, .pdf"
+          required
+        >
+        <img
+          *ngIf="product_file.file"
+          [src]="product_file.file"
+          [style]="{'width': '300px', 'heigh':'300px'}"
+          style="max-width: 100%;"
+        >
+      </div>
+      
+      <div class="form-group" >
+        <button type="submit" class="btn btn-primary">
+          {{ is_Edit ? 'Cập nhật' : 'Tạo' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

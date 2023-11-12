@@ -34,6 +34,13 @@ export class CategoryProductComponent implements OnInit {
       this.categories = res.data;
 
       this.originalCategories = [...this.categories]
+
+      this.categories.forEach((category) =>{
+        const parent = this.categories.find((c) => c.id === category.parent_category_id);
+        if(parent){
+          category.parent_category_id = parent.name;
+        }
+      })
     });
   }
 

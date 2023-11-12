@@ -1,0 +1,41 @@
+
+<div class="header">
+  <h1 class="header-title">Danh sác voucher sản phẩm</h1>
+
+  <button class="btn-add" (click)="onAdd()" pButton>
+    <i class="fas fa-plus"></i>
+    Thêm
+  </button>
+</div>
+
+<p-divider></p-divider>
+
+<p-table [value]="voucher" [paginator]="true" [rows]="10" [responsive]="true" [autoLayout]="true" >
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Tên voucher</th>
+      <th>Mã voucher</th>
+      <th>Có được áp dụng không</th>
+      <th>Số lần sử dụng</th>
+      <th>Số tiền giảm</th>
+      <th>Ghi chú</th>
+      <th>Trạng thái</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-vou>
+    <tr>
+      <td> {{vou.id}} </td>
+      <td> {{vou.name}} </td>
+      <td> {{vou.code}} </td>
+      <td> {{vou.is_apply_count}} </td>
+      <td> {{vou.max_apply_count}} </td>
+      <td> {{vou.discount_cash | number:'1.0-0'}}đ </td>
+      <td> {{vou.type}} </td>
+      <td>
+        <button (click)="onEdit(vou.id)" pButton type="button" icon="pi pi-pencil" class="p-button-info"></button>
+        <button (click)="deleteVoucher(vou.id)" pButton type="button" icon="pi pi-trash" class="p-button-danger"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

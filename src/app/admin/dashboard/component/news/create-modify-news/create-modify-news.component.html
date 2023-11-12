@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="header">
+        <h2>
+          {{ is_Edit ? 'Chinhr sửa tin tức' : 'Tạo mới tin tức' }}
+        </h2>
+
+        <p-divider></p-divider>
+
+        <form class="form" (ngSubmit)="onSubmit()" >
+          <div class="form-group">
+            <label for="category_id">Chọn danh mục tin tức:</label>
+            <select
+              [(ngModel)]="news.category_id"
+              name="category_id"
+              id="category_id"
+              class="form-control"
+              [style]="{'width':'300px'}"
+              required
+              >
+                <option value="0"> --Vui lòng chọn loại tin tức-- </option>
+                <option
+                  *ngFor="let category of categories"
+                  [value]="category.id"
+                  >
+                    {{ category.name }}
+                </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="title">Tên bài viết:</label>
+            <input
+              [(ngModel)]="news.title"
+              type="text"
+              name="title"
+              id="title"
+              class="form-control"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="short_description">Mô tả ngắn bài viết:</label>
+            <input
+              [(ngModel)]="news.short_description"
+              type="text"
+              name="short_description"
+              id="short_description"
+              class="form-control"
+              required
+            >
+          </div>
+          <div class="form-group">
+            <label for="content">Nội dung bài viết:</label>
+            <input
+              [(ngModel)]="news.content"
+              type="text"
+              name="content"
+              id="content"
+              class="form-control"
+              required
+            >
+          </div>
+          <div class="form-group">
+            <label for="note">Ghi chú:</label>
+            <input
+              [(ngModel)]="news.note"
+              type="text"
+              name="note"
+              id="note"
+              class="form-control"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label
+              for="avatar"
+              class="form-label"
+            >Chọn ảnh bài viết:</label>
+            <input
+              (change)="onSelectFimatLine($event)"
+              id="avatar"
+              name="avatar"
+              class="avatar"
+              accept=".png, .jpg, .jpeg, .pdf"
+              type="file"
+              required
+            >
+            <img
+              *ngIf="news.avatar"
+              [src]="news.avatar"
+              alt="Chọn ảnh"
+              style="max-width: 100%;"
+              [style]="{'width': '300px', 'heigh':'300px'}"
+            >
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">
+              {{ is_Edit ? 'Cập nhập' : 'Tạo' }}
+            </button>
+          </div>
+
+        </form>
+    </div>
+</div>

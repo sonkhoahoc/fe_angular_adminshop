@@ -56,10 +56,16 @@ export class CreateModifySliderComponent {
     }
   }
 
-  onSelectFile(event: any) {
+  onSelectFimatLine(event: any){
     const file = event.target.files[0];
-    if (file) {
-      this.slider.url = file.name; // Lưu tên tệp hình ảnh vào slider.url
+
+    if(file){
+      const reader = new FileReader();
+
+      reader.onload = (e) =>{
+        this.slider.url = e.target.result as string;
+      };
+      reader.readAsDataURL(file);
     }
   }
 

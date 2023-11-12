@@ -19,6 +19,25 @@
         />
       </div>
     </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-12 p-md-6">
+        <label for="parent_category_id">Chọn danh mục cha:</label>
+        <select
+          [(ngModel)]="category.parent_category_id"
+          name="parent_category_id"
+          id="parent_category_id"
+        >
+            <option value="0"> --Vui lòng chọn danh mục cha-- </option>
+            <option
+              *ngFor="let category of categories"
+              [value]="category.id"
+
+            >
+            {{ category.name }}
+            </option>
+        </select>
+      </div>
+    </div>
     <br>
     <div class="p-grid p-justify-end text-right">
       <button

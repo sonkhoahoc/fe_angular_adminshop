@@ -12,6 +12,7 @@ import { CategoryProductService } from 'src/app/services/category-product/catego
 })
 export class CreateModifyCategoryProductComponent implements OnInit {
 
+  categories: any[] = [];
   category: Category_Product = {
     id: 0,
     userAdded: 0,
@@ -19,6 +20,7 @@ export class CreateModifyCategoryProductComponent implements OnInit {
     dateAdded: new Date(),
     dateUpdated: new Date(),
     name: '',
+    parent_category_id: 0,
     is_delete: true
   };
   idEdit: boolean;
@@ -31,7 +33,11 @@ export class CreateModifyCategoryProductComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   this.id = +this.route.snapshot.params['id'];
+    this.id = +this.route.snapshot.params['id'];
+
+    this.cateSer.getlistCategory_product().subscribe((res: any) =>{
+      this.categories = res.data
+    })
 
     if(this.id){
       this.idEdit = true;

@@ -5,7 +5,7 @@
 
 <p-divider></p-divider>
 
-<p-table [value]="slider">
+<p-table [value]="slider" [paginator]="true" [rows]="10" [responsive]="true" [autoLayout]="true">
   <ng-template pTemplate="header">
     <tr>
       <th>#</th>
@@ -18,7 +18,7 @@
     <tr>
       <td>{{image.id}}</td>
       <td>
-        <img *ngIf="image && image.url" src="assets/image/slider/{{image.url}}" alt="" style="width: 100px;">
+        <img *ngIf="image && image.url" [src]="image.url" alt="" style="width: 100px;">
       </td>
       <td>{{ image.note }}</td>
       <td style="text-align: center;">
