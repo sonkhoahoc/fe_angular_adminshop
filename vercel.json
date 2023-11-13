@@ -1,0 +1,5 @@
+{
+  "framework": "angular",
+  "buildPath": "dist",
+  "production": true
+}
