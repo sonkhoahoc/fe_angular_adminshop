@@ -1,6 +1,5 @@
 {
   "framework": "angular",
-  "buildPath": "dist",
   "buildCommand": "next build",
   "production": true
 }
