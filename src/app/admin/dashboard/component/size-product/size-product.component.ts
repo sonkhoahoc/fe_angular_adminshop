@@ -34,7 +34,6 @@ export class SizeProductComponent implements OnInit {
 
       this.proSer.getListProduct().subscribe((res: any) =>{
         this.products = res.data;
-        console.log('product', res.data)
         this.sizes.forEach((size) => {
           const product = this.products.find((p) => p.id === size.product_id);
           if (product) {
