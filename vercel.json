@@ -1,5 +1,4 @@
 {
   "framework": "angular",
-  "buildCommand": "next build",
-  "production": true
+  "buildCommand": "next build"
 }
